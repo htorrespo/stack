@@ -1,0 +1,131 @@
+Velocity.py
+Last year
+Sep 6, 2017
+Drive Notepad
+You edited an item
+Text
+Velocity.py
+Aug 16, 2017
+Drive Notepad
+You created an item in
+Google Drive Folder
+isokinetic
+Created items:
+Text
+velocity.py
+
+#!/usr/bin/python
+# Velocity.py
+
+'''
+    Nomenclature:
+    ---------------------------------------
+    waterVaporFraction                  # Bws=Water vapor in the gas stream, proportion by volume.
+    pitotTubeCoefficient                # Cp(s)=Type S pitot tube coefficient, dimensionless.
+    standardPitotTubeCoefficient        # Cp(std)=Standard pitot tube coefficient; use 0.99 
+    equivalentDiameter                  # De=Equivalent diameter.
+    velocityEquationConstant            # Kp=Velocity equation constant. 
+                                        #  constant velocity metric units
+                                        # 34.97 m/s [{(g/g-mole)(mm Hg)}/{(K)(mm H2O)}]^1/2
+                                        # constant velocity english units
+                                        # 85.49 ft/s [{(lb/lb-mole)(in Hg)}/{(R)(in H2O)}]^1/2
+    lenghtStack                         # L=Length. 
+    widthtStack                         # W=Width.
+    dryMolecularWeight                  # Md=Molecular weight of stack gas, dry basis (see section 8.6), g/g-mole (lb/lb-mole).
+    wetMolecularWeight                  # Ms=Molecular weight of stack gas, wet basis, g/g-mole (lb/lb-mole).
+    totalNumberTraversePoints           # n =Total number of traverse points.
+    barometricPressure                  # Pbar=Barometric pressure at measurement site, mm Hg (in. Hg).
+    stackStaticPressure                 # Pg=Stack static pressure, mm Hg (in. Hg).
+    averageAbsoluteStackTemperature     # Ps=Absolute stack pressure (Pbar + Pg), mm Hg (in. Hg),
+    averageStackTemperature             # Ts(abavg)= Average absolute stack temperature, °K (°R), 273 + Ts metric units, 460 + Tsr English units.
+    averageStackVelocity                # Vs=Average stack gas velocity, m/sec (ft/sec).
+    standardAbsoluteTemperature         # Tstd=Standard absolute temperature, 293 °K (528 °R).
+    standardAbsolutePressure            # Pstd=Standard absolute pressure, 760 mm Hg (29.92 in. Hg). 
+    crossSectionalArea                  # A=Cross-sectional area of stack, m2(ft2). 
+    dryVolumetricGasFlowStandard        # Qsd=Dry volumetric stack gas flow rate corrected to standard conditions, dscm/hr (dscf/hr). 
+    velocityHeadGas                     # delta-p=Velocity head of stack gas, mm H2O (in. H20).
+    individualVelocityHeadGas           # delta-pi=Individual velocity head reading at traverse point "i", mm (in.) H2O.
+    velocityHeadGasPitotStandard        # delta-pstd=Velocity head measured by the standard pitot tube, cm (in.) H2O.
+    velocityHeadGasPitotTypeS           # delta-ps=Velocity head measured by the Type S pitot tube, cm (in.) H2O. 
+    secondToHour                        # 3600=Conversion Factor, sec/hr. 
+    molecularWeightWater                # 18.0=Molecular weight of water, g/g-mole (lb/lb-mole).
+    sensitivityFactorGauges             # T=Sensitivity factor for differential pressure gauges.
+    constantWater                       # K=0.127 mm H2O (metric units). 0.005 in. H2O (English units). 
+
+
+D:\hp_pdf\WILEYeBook--Computational Physics Problem Solving with Computers-Python.pdf
+WILEYeBook--Computational Physics Problem Solving with Computers-Python.pdf
+
+python_book.pdf pagina 211
+
+http://pythoncentral.io/python-null-equivalent-none/
+https://stackoverflow.com/questions/19473185/what-is-a-none-value
+
+Resources
+https://www.epa.gov/emc/emc-promulgated-test-methods
+https://www.epa.gov/sites/production/files/2016-06/documents/m-02.pdf
+
+    the module must be intelligent. This must test several aspects for
+    rubustnes, the cases the should test are...
+    La aplicacion debe ser inteligente, responder a todos los interrogantes
+    posibles. 
+    inconsistencia de datos ... enumerarlos...
+    1) Exposicion de todos los metodos contenidos en la clase
+    http://hplgit.github.io/decay-book/doc/pub/book/html/._decay-book009.html#decay:se
+    http://www.tutorialspoint.com/python/python_classes_objects.htm
+'''
+
+import sys
+from math import *
+
+def averageStackDryVolumetricFlowRate( waterVaporFraction, averageStackVelocity,
+                                       crossSectionalArea, standardAbsoluteTemperature,
+                                       stackAbsolutePressure, averageAbsoluteStackTemperature,
+                                       standardAbsolutePressure ):
+    standardAbsoluteTemperature = 537.0                                ## english units
+    standardAbsolutePressure = 29.92                                   ## english units
+    ratioAbsoluteTemperatureToPressure =17.64705882352941              ## english units
+    constantTimeRatioAbsoluteTemperatureToPressure = 63529.41176470588 ## english units 3600*Tstd/Pstd = 3600*528/29.92
+    dryGasFraction = ( 1 - waterVaporFraction )                        ## water fraction
+    ratioStackAbsolutePressureToAverageAbsoluteStackTemperature = stackAbsolutePressure / averageAbsoluteStackTemperature
+    return dryGasFraction * averageStackVelocity * crossSectionalArea * constantTimeRatioAbsoluteTemperatureToPressure * ratioStackAbsolutePressureToAverageAbsoluteStackTemperature
+    
+def averageData(values):
+    sumData = 0
+    numberData = 0
+    for value in values:
+        sumData += value
+        numberData += 1
+    return sumData / numberData
+
+def averageDataSquare(values):
+    sumData = 0
+    numberData = 0
+    for value in values:
+        sumData += sqrt(value)
+        numberData += 1
+    return sumData / numberData
+
+def velocityEnglish(sqrtDeltap, Ts, Ps, Ms, Cp=None, Kp=None):
+
+    ''' velocity for english units'''
+    if Cp is None:
+        Cp = 0.84
+    if Kp is None:
+        Kp = 85.49
+
+    return Cp*Kp*sqrt(Ts/(Ps*Ms))
+
+def test():
+    print '"velocity 1": "%s"' % ( velocityEnglish( 0.25, 560, 22.04, 29.88, 0.85, 85.49 ), )
+    print '"velocity 2": "%s"' % ( velocityEnglish( 0.25, 560, 22.04, 29.88, 0.85 ), )
+    print '"velocity 3": "%s"' % ( velocityEnglish( 0.25, 560, 22.04, 29.88 ), )
+    temperature = [11.0, 22.0, 33.0, 44.0]
+    velocityHead = [0.50, 0.70, 0.75, 0.48]
+    print '"average data square": "%s"' % ( averageData( temperature ), )
+    print '"average data square": "%s"' % ( averageDataSquare( velocityHead ), )
+    print '"volumetric flow rate": "%s"' % ( averageStackDryVolumetricFlowRate( 0.06, 2.6, 0.4658, 537, 22.018, 737, 29.92 ), )
+
+
+if __name__ == '__main__':  ## for test
+    test()
