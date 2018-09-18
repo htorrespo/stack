@@ -543,6 +543,11 @@ This is on a separate line
 a^2+b^2=c^2
 ```
 
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
 
 # TODO
 
