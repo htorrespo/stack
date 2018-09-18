@@ -533,3 +533,12 @@ Y=Dry gas meter calibration factor.
 60=Sec/min.
 
 100=Conversion to percent.
+
+# TODO
+
+[ ] Determine the tasks or functions name used in all methods. Cross references
+[ ] Build use cases for methods
+[ ] Build image for interrelation of methods
+[ ] Define the packages contents
+[ ] Start coding class, methods and files
+[ ] More ...
