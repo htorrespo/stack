@@ -534,6 +534,16 @@ Y=Dry gas meter calibration factor.
 
 100=Conversion to percent.
 
+It is possible to have math written with the LaTeX syntax rendered using [KaTeX](https://github.com/Khan/KaTeX). See Github [site](https://docs.gitlab.com/ee/user/markdown.html).
+
+This math is inline $`a^2+b^2=c^2`$.
+
+This is on a separate line
+```math
+a^2+b^2=c^2
+```
+
+
 # TODO
 
 - [ ] Determine the tasks or functions name used in all methods. Cross references
