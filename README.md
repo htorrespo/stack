@@ -536,14 +536,14 @@ Y=Dry gas meter calibration factor.
 
 # TODO
 
-[ ] Determine the tasks or functions name used in all methods. Cross references
+- [ ] Determine the tasks or functions name used in all methods. Cross references
 
-[ ] Build use cases for methods
+- [ ] Build use cases for methods
 
-[ ] Build image for interrelation of methods
+- [ ] Build image for interrelation of methods
 
-[ ] Define the packages contents
+- [ ] Define the packages contents
 
-[ ] Start coding class, methods and files
+- [ ] Start coding class, methods and files
 
-[ ] More ...
+- [ ] More ...
