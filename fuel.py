@@ -1,10 +1,3 @@
-fuel.py
-Last year
-Sep 2, 2017
-You uploaded an item
-Text
-fuel.py
-
 #!/usr/bin/python
 # fuel.py
 
