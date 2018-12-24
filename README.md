@@ -2,6 +2,7 @@
 
 This repository serve for several purpose, preliminary, intermediate and final calculation for evaluation of stack test emissions. This can be acomplish for technical who know EPA or ISO methods for evaluation of stack tests, and also fluid mechanics, and thermodinamics, is an ideal condition.
 
+************************************************************************
 In this site are the EPA methods with several functions arranged in packages for use in personal projects, but can be extended with time.
 
 ## Functions or methods
