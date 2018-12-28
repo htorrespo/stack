@@ -1,15 +1,16 @@
-# Source code repository for stack test emission
+# Repositorio para estudios de emisiones en chimenea
 
-This repository serve for several purpose, preliminary, intermediate and final calculation for evaluation of stack test emissions. This can be acomplish for technical who know EPA or ISO methods for evaluation of stack tests, and also fluid mechanics, and thermodinamics, is an ideal condition.
+Este repositorio sirve para varios propósitos, cálculos preliminares, 
+intermedios y finales para la evaluación de las emisiones de chimenea. 
+Estas determinaciones las hacen los técnicos que conocen los métodos EPA 
+o ISO para la evaluación de emisiones en chimenea. Es necesario tener 
+conocimientos basicos en mecanica de fluidos y termodinámica.
 
-************************************************************************
-In this site are the EPA methods with several functions arranged in packages for use in personal projects, but can be extended with time.
+En este sitio se encuentran los métodos de la EPA con varias funciones 
+organizadas en paquetes para uso en proyectos personales, pero se pueden 
+ampliar con el tiempo.
 
-## Functions or methods
-
-**Velocity**
-**
-**Absolute temperature**
+## Functioness o metodos
 
 ### Nomenclature EPA Method 1
 
@@ -348,83 +349,98 @@ vdrem= velocidad del gas en chimenea medida a una distancia drem desde la pared,
 
 QT= tasa de flujo volumetrica (caudal) total del gas en chimenea para el sector mas cercano a la pared por el Metodo 1, ft-in2 / s (m-cm2 / s);
 
+Vej= reemplazo de la velocidad en chimenea para el Metodo 1 del sector mas
+cercano a la pared, i.e., velocidad puntual en la chimenea, ajustado por 
+efectos de pared, para el sector j-esimo mas cercano a la pared, 
+ft/s (m/s) actual.
 
+VAVG=  velocidad promedio en chimenea que tiene en cuenta el decaimiento 
+de la velocidad cerca a las paredes, ft/s (m/s) actual.
 
+WAF= factor de ajuste por efecto de paredes derivado de vavg y VAVG para 
+un unico punto transversal, adimensional
 
-Vej=the replacement stack gas velocity for the Method 1 equal-area sector closest to the wall, i.e., the stack gas point velocity value, adjusted for wall effects, for the jth Method 1 equal-area sector closest to the wall, actual ft/sec (m/sec);
-VAVG=the average stack gas velocity that accounts for velocity decay near the wall, actual ft/sec (m/sec);
+vfinal= velocidad promedio en chimenea final ajustado por efecto de 
+paredes, que reemplaza la velocidad promedio en chimenea sin ajuste 
+obtenido con el Metodo 2, 2F, o 2G para pruebas de campo empleando un 
+unico punto transversal, ft/s (m/s) actual.
 
-WAF=the wall effects adjustment factor derived from vavg and VAVG for a single traverse, dimensionless;
+WAF'= factor de ajuste por efecto de paredes que se aplica a la velocidad 
+promedio, sin ajuste por efecto de paredes, para obtener la velocidad 
+promedio en chimenea final ajustado por efecto de paredes vfinal o 
+vfinal(k), adimensional
 
-vfinal=the final wall effects-adjusted average stack gas velocity that replaces the unadjusted average stack gas velocity obtained using Method 2, 2F, or 2G for a field test consisting of a single traverse, actual ft/sec (m/sec);
+vfinal(k)= velocidad promedio en chimenea final ajustado por efectos de 
+pared que reemplaza la velocidad promedio en chimenea sin auste obtenido 
+con el Metodo 2, 2F, o 2G en una ejecucion k de una prueba RATA u otros 
+procedimientos de ejecuciones de muestreo multiples, ft/s (m/s) actual.
 
-WAF'=the wall effects adjustment factor that is applied to the average velocity, unadjusted for wall effects, in order to obtain the final wall effects-adjusted stack gas velocity vfinal or vfinal(k), dimensionless;
+vavg(k)= velocidad promedio en chimenea, obtenida en el procedimiento de 
+muestreo k de una prueba RATA u u otros procedimientos de ejecuciones de 
+muestreo multiples, sin ajuste por decaimiento de velocidad cerca a las 
+paredes, ft/s (m/s) actual.
 
-vfinal(k)=the final wall effects-adjusted average stack gas velocity that replaces the unadjusted average stack gas velocity obtained using Method 2, 2F, or 2G on run k of a RATA or other multiple-run field test procedure, actual ft/sec (m/sec);
-
-vavg(k)=the average stack gas velocity, obtained on run k of a RATA or other multiple-run procedure, unadjusted for velocity decay near the wall, actual ft/sec (m/sec);
-
-k= index of runs in a RATA or other multiple-run procedure.
+k= indice de ejecuciones en un RATA u otro procedimiento de ejecuciones multiples
 
 
 ### Nomenclature EPA Method 3
 
-Md=peso molecular del gas en chimenea, base seca(ver seccion 8.6), g/g-mol (lb/lb-mol). 
+Md=peso molecular del gas en chimenea, base seca( ver seccion 8.6), g/g-mol (lb/lb-mol). 
 
-%CO2=Percent CO2 by volume, dry basis.
+%CO2=porcentaje de CO2 en volumen, base seca.
 
-%O2=Percent O2 by volume, dry basis.
+%O2= porcentaje de O2 en volumen, base seca.
 
-%CO=Percent CO by volume, dry basis.
+%CO= porcentaje de CO en volumen, base seca.
 
-%N2=Percent N2 by volume, dry basis.
+%N2= porcentaje de N2 en volumen, base seca.
 
-0.280=Molecular weight of N2 or CO, divided by 100.
+0.280= peso molecular de N2 or CO, dividido en 100.
 
-0.320=Molecular weight of O2 divided by 100.
+0.320= peso molecular de O2 dividido en 100.
 
-0.440=Molecular weight of CO2 divided by 100.
+0.440= peso molecular de CO2 dividido en 100.
 
 ### Nomenclature EPA Method 3A - no tiene
 
 ### Nomenclature EPA Method 3B
 
 
-%EA=Percent excess air.
+%EA= porcentaje exceso de aire.
 
-0.264=Ratio of O2 to N2 in air, v/v.
+0.264= cociente O2 a N2 en aire, v/v.
 
 ### Nomenclature EPA Method 3C
 
 Bw= contenido de humedad en la muestra, fraccion.
 
-CN2= Measured N2 concentration (by Method 3C), fraction.
+CN2= concentracion de N2 medida (por Method 3C), fraccion.
 
-CN2Corr= Measured N2 concentration corrected only for dilution, fraction.
+CN2Corr= concentracion de N2 medida corregida solamente por dilucion, fraccion.
 
-Ct= Calculated NMOC concentration, ppmv C equivalent.
+Ct= concentracion de NMOC calculada, ppmv C equivalente.
 
-Ctm= Measured NMOC concentration, ppmv C equivalent.
+Ctm= concentracion de NMOC medida, ppmv C equivalente.
 
 Pb= presion barometrica, mm Hg.
 
-Pt= Gas sample tank pressure after sampling, but before pressurizing, mm Hg absolute.
+Pt= presion absoluta en el tanque, pero antes de presurizacion, mm Hg absoluta.
 
-Ptf= Final gas sample tank pressure after pressurizing, mm Hg absolute.
+Ptf= presion absoluta en el taque de muestreo despues de presurizacion, mm Hg absoluta.
 
-Pti= Gas sample tank pressure after evacuation, mm Hg absolute.
+Pti= presion absoluta en el tanque de muestreo despues de evacuacipn, mm Hg absoluta.
 
-Pw= Vapor pressure of H2O (from Table 25C-1), mm Hg.
+Pw= presion de vapor del H2O (de Tabla 25C-1), mm Hg.
 
-r = Total number of analyzer injections of sample tank during analysis (where j = injection number, 1 . . . r).
+r = numero total de inyecciones al analizador (tanque de muestra) durante el analisis (donde J = numero de inyecciones, 1, ...r)
 
-R = Mean calibration response factor for specific sample component, area/ppm.
+R = factor de respuesta de calibracion media para un componente de muestra especifica, area/ppm.
 
-Tt= Sample tank temperature at completion of sampling, °K.
+Tt= temperatura en el tanque al completar el muestreo, °K.
 
-Tti= Sample tank temperature before sampling, °K.
+Tti= temperatura en el tanque antes del muestreo, °K.
 
-Ttf= Sample tank temperature after pressurizing, °K.
+Ttf= temperatura en el tanque despues de presurizar, °K.
 
 ### Nomenclature EPA Method 4
 
@@ -432,61 +448,61 @@ Bws=vapor de agua en la corriente gaseosa (metodo 4 o alternativo), fracción de
 
 Mw= peso molecular del agua, 18.0 g/g-mol (18.0 lb/lb-mol). 
 
-Pm=Absolute pressure (for this method, same as barometric pressure) at the dry gas meter, mm Hg (in. Hg). 
+Pm= presion absoluta en medidor de gas seco ( para este metodo, igual a la presion barometrica), mm Hg (in. Hg). 
 
 Pstd=presion absoluta estandar, 760 mm Hg (29.92 in. Hg).
 
-R=Ideal gas constant, 0.06236 (mm Hg)(m3)/(g-mole)(°K) for metric units and 21.85 (in. Hg)(ft3)/(lb-mole)(°R) for English units. 
+R= constante del gas ideal, 0.06236 ((mm Hg)(m3))/((K)(g-mole)) {21.85 ((in. Hg) (ft3))/((°R) (lb-mole))}.
 
-Tm=Absolute temperature at meter, °K (°R). 
+Tm= temperatura absoluta en medidor, °K (°R). 
 
 Tstd= temperatura estandar absoluta, 293 °K (528 °R). 
 
-Vf=Final volume of condenser water, ml. 
+Vf= volumen final de agua condensada, ml. 
 
-Vi=Initial volume, if any, of condenser water, ml. 
+Vi= volumen inicial, si existe, de agua condensada, ml. 
 
-Vm=Dry gas volume measured by dry gas meter, dcm (dcf). 
+Vm= volumen de gas seco registrado por el medidor de gas seco, dcm (dcf). 
 
-Vm(std)=Dry gas volume measured by the dry gas meter, corrected to standard conditions, dscm (dscf). 
+Vm(std)= volumen de gas seco medido en medidor de gas seco, corregido a condiciones estandar, dscm (dscf). 
 
-Vwc(std)=Volume of water vapor condensed, corrected to standard conditions, scm (scf). 
+Vwc(std)= volumen de vapor de agua condensado, corregido a condiciones estandar, scm (scf). 
 
-Vwsg(std)=Volume of water vapor collected in silica gel, corrected to standard conditions, scm (scf). 
+Vwsg(std)= volumen de vapor de agua recogido en silica gel, corregido a condiciones estandar, scm (scf). 
 
-Wf=Final weight of silica gel or silica gel plus impinger, g. 
+Wf= peso final de la silica gel o silica gel mas burbujeador, g. 
 
-Wi=Initial weight of silica gel or silica gel plus impinger, g. 
+Wi= peso inicial de la silica gel o silica gel mas burbujeador, g. 
 
-Y=Dry gas meter calibration factor. 
+Y= factor de calibración del medidor de gas seco. 
 
-ΔVm=Incremental dry gas volume measured by dry gas meter at each traverse point, dcm (dcf).
+ΔVm= incremento de volumen de gas seco medido por el medidor de gas seco en cada punto transversal, dcm (dcf).
 
-ρw=Density of water, 0.9982 g/ml (0.002201 lb/ml). 
+ρw= densidad del agua, 0.9982 g/ml (0.002201 lb/ml). 
 
 ### Nomenclature EPA Method 5
 
-An = Cross-sectional area of nozzle, m2(ft2).
+An = area transversal de la boquilla, m2(ft2).
 
 Bws=vapor de agua en la corriente gaseosa (metodo 4 o alternativo), fracción de volumen.
 
-Ca=Acetone blank residue concentration, mg/mg.
+Ca= concentracion residuo de la acetona blanco, mg/mg.
 
-cs=Concentration of particulate matter in stack gas, dry basis, corrected to standard conditions, g/dscm (gr/dscf).
+cs= concentracion de material particulado en chimenea, base seca, corregida a condiciones estandar, g/dscm (gr/dscf).
 
-I=Percent of isokinetic sampling.
+I= Porcentaje de isocinetismo de muestreo.
 
-L1=Individual leakage rate observed during the leak-check conducted prior to the first component change, m3/min (ft3/min).
+L1= tasa de fuga individual observada durante prueba de fugas realizada antes del cambio del primer componente, m3/min (ft3/min).
 
-La=Maximum acceptable leakage rate for either a pretest leak-check or for a leak-check following a component change; equal to 0.00057 m3/min (0.020 cfm) or 4 percent of the average sampling rate, whichever is less.
+La= tasa de fuga maxima aceptable para una prueba de fugas antes de un estudio y despues del cambio de un componente; igual a 0.00057 m3/min (0.020 cfm) o 4 porciento de la tasa de muestre promedio, o el que sea menor.
 
-Li=Individual leakage rate observed during the leak-check conducted prior to the “ith” component change (i=1, 2, 3 . . . n), m3/min (cfm).
+Li= tasa de fuga individual observada durante prueba de fugas realizada antes de iesimo cambio de componente del tren de muestreo (i=1, 2, 3 . . . n), m3/min (cfm).
 
-Lp=Leakage rate observed during the post-test leak-check, m3/min (cfm).
+Lp= tasa de fuga observada durante prueba de fugas realizada posterior al muestreo, m3/min (cfm).
 
-ma=Mass of residue of acetone after evaporation, mg.
+ma= masa de residuo en acetona despues de evaporacion, mg.
 
-mn=Total amount of particulate matter collected, mg.
+mn= cantidad total de material particulado recogido, mg.
 
 Mw= peso molecular del agua, 18.0 g/g-mol (18.0 lb/lb-mol).
 
@@ -496,45 +512,45 @@ Ps= presion absoluta en chimenea(Pbar + Pg), mm Hg (in. Hg),
 
 Pstd= presion absoluta estandar, 760 mm Hg (29.92 in. Hg).
 
-R=Ideal gas constant, 0.06236 ((mm Hg)(m3))/((K)(g-mole)) {21.85 ((in. Hg) (ft3))/((°R) (lb-mole))}.
+R= constante del gas ideal, 0.06236 ((mm Hg)(m3))/((K)(g-mole)) {21.85 ((in. Hg) (ft3))/((°R) (lb-mole))}.
 
-Tm=Absolute average DGM temperature (see Figure 5-3), K (°R).
+Tm= temperatura absoluta promedio en el DGM (ver Figura 5-3), K (°R).
 
-Ts=Absolute average stack gas temperature (see Figure 5-3), K (°R).
+Ts= Ts(avg)= temperatura absoluta promedio en chimenea o ducto (ver Figura 5-3), K (°R).
 
 Tstd= temperatura estandar absoluta, 293 °K (528 °R).
 
-Va=Volume of acetone blank, ml.
+Va= volumen de acetona blanco, ml.
 
-Vaw=Volume of acetone used in wash, ml.
+Vaw= volumen de acetona utilizado en lavado, ml.
 
-V1c=Total volume of liquid collected in impingers and silica gel (see Figure 5-6), ml.
+V1c= volumen total de liquido recogido en burbujeadores y silica gel (ver Figura 5-6), ml.
 
-Vm=Volume of gas sample as measured by dry gas meter, dcm (dcf).
+Vm= volume  de gas registrado por el medidor de gas seco, dcm (dcf).
 
-Vm(std)=Volume of gas sample measured by the dry gas meter, corrected to standard conditions, dscm (dscf).
+Vm(std)= volumen de gas registrado por el medidor de gas seco, corregido a condiciones estandar, dscm (dscf).
 
-Vw(std)=Volume of water vapor in the gas sample, corrected to standard conditions, scm (scf).
+Vw(std)= volumen de vapor de agua en el agua, corregido a condiciones estandar, scm (scf).
 
 Vs= velocidad promedio en chimenea, determinada por el Metodo 2, ecuacion 2-7, con datos obtenidos por el Metodo 5, m/s (ft/s).
 
-Wa=Weight of residue in acetone wash, mg.
+Wa= peso del residuo en la acetona de lavado, mg.
 
-Y=Dry gas meter calibration factor.
+Y= factor de calibracion del medidor de gas seco.
 
-ΔH=Average pressure differential across the orifice meter (see Figure 5-4), mm H2O (in. H2O).
+ΔH= presion diferencial promedio en el orificio, (ver  Figura 5-4), mm H2O (in. H2O).
 
-ρa=Density of acetone, mg/ml (see label on bottle).
+ρa= densidad de la acetona, mg/ml (ver nivel de la botella).
 
-ρw=Density of water, 0.9982 g/ml. (0.002201 lb/ml).
+ρw= densidad del agua, 0.9982 g/ml. (0.002201 lb/ml).
 
-θ=Total sampling time, min.
+θ= tiempo e muestreo total, min.
 
-θ1=Sampling time interval, from the beginning of a run until the first component change, min.
+θ1= intervalo de tiempo de muestreo, desde el principio hasta el primer cambio, min.
 
-θi=Sampling time interval, between two successive component changes, beginning with the interval between the first and second changes, min.
+θi= intervalo de tiempo de muestreo, entre cambios sucesivos, comenzando con el intervalo entre el primero y segundo cambio, min. 
 
-θp=Sampling time interval, from the final (nth) component change until the end of the sampling run, min.
+θp= intervalo de tiempo de muestreo, desde el último cambio hasta el final del tiempo de muestreo, min.
 
 13.6= gravedad especifica del mercurio. factor de conversion de mm H2O (in. H2O) a mm Hg (in. Hg).
 
@@ -544,18 +560,12 @@ Y=Dry gas meter calibration factor.
 
 It is possible to have math written with the LaTeX syntax rendered using [KaTeX](https://github.com/Khan/KaTeX). See Github [site](https://docs.gitlab.com/ee/user/markdown.html).
 
-This math is inline $`a^2+b^2=c^2`$.
+This math is inline `a^2+b^2=c^2`.
 
-This is on a separate line
+
 ```math
 a^2+b^2=c^2
 ```
-
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
 
 # TODO
 
